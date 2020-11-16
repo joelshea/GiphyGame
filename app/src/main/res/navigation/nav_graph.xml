@@ -17,5 +17,18 @@
         android:id="@+id/searchFragment"
         android:name="com.avalonomnimedia.giphygame.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_giphyFragment"
+            app:destination="@id/giphyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/giphyFragment"
+        android:name="com.avalonomnimedia.giphygame.GiphyFragment"
+        android:label="fragment_giphy"
+        tools:layout="@layout/fragment_giphy" >
+        <argument
+            android:name="searchTerm"
+            app:argType="string" />
+    </fragment>
 </navigation>

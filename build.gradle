@@ -2,6 +2,8 @@
 buildscript {
     ext.kotlin_version = "1.4.10"
     ext.nav_version = "2.3.1"
+    ext.java_version = JavaVersion.VERSION_1_8
+
     repositories {
         google()
         jcenter()
@@ -17,6 +19,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://giphy.bintray.com/giphy-sdk"
+        }
     }
 }
 
