@@ -10,20 +10,19 @@
     <TextView
         android:id="@+id/textTitle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/results_title"
         app:layout_constraintBottom_toTopOf="@+id/textScore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageResults" />
 
     <TextView
         android:id="@+id/textScore"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="323dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/results_score_placeholder"
-        app:layout_constraintBottom_toTopOf="@+id/button_play_again"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTitle" />
@@ -37,5 +36,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textScore" />
+
+    <ImageView
+        android:id="@+id/imageResults"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_max="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

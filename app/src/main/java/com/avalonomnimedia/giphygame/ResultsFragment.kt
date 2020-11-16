@@ -1,23 +1,27 @@
 package com.avalonomnimedia.giphygame
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.lifecycle.*
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.avalonomnimedia.giphygame.service.DictionaryService
 import com.avalonomnimedia.giphygame.service.IDictionaryService
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 import io.ktor.client.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import kotlinx.android.synthetic.main.fragment_results.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+
 
 class ResultsFragment : Fragment() {
     private val args: ResultsFragmentArgs by navArgs()
@@ -37,6 +41,9 @@ class ResultsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_results, container, false)
+
+        Glide.with(this).load(R.raw.wait).transition(withCrossFade()).into(view.findViewById(R.id.imageResults))
+
         view.findViewById<Button>(R.id.button_play_again).setOnClickListener {
             findNavController().navigate(ResultsFragmentDirections.actionResultsFragmentToSearchFragment())
         }
@@ -47,23 +54,22 @@ class ResultsFragment : Fragment() {
         super.onStart()
 
         resultsViewModel.calculateScore(args.searchTerm, args.guess).observe(this) {
-            textScore.text = this.requireContext().getString(it.resId, it.score)
+            textScore.text = this.requireContext().getString(it.textId, it.score)
+            Glide.with(this).load(it.gifId).transition(withCrossFade()).into(imageResults)
         }
-
-
     }
 }
 
 class ResultsViewModel(private val dictionaryService: IDictionaryService) : ViewModel() {
     fun calculateScore(searchTerm: String, guess: String): LiveData<ResultsData> = liveData {
         val points = if (guess == searchTerm) {
-            ResultsData(R.string.results_perfect_score)
+            ResultsData(R.string.results_perfect_score, gifId = R.raw.win)
         } else {
             val found = dictionaryService.getSynonyms(searchTerm).firstOrNull { it.word == guess }
             if (found != null) {
-                ResultsData(R.string.results_some_points, found.score)
+                ResultsData(R.string.results_some_points, found.score, R.raw.soso)
             } else {
-                ResultsData(R.string.results_no_points)
+                ResultsData(R.string.results_no_points, gifId = R.raw.bad)
             }
         }
 
@@ -71,4 +77,4 @@ class ResultsViewModel(private val dictionaryService: IDictionaryService) : View
     }
 }
 
-data class ResultsData(val resId: Int, val score: Int? = null)
+data class ResultsData(val textId: Int, val score: Int? = null, val gifId: Int)

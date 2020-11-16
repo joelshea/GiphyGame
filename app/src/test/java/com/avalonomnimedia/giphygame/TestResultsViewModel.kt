@@ -35,7 +35,7 @@ class TestResultsViewModel {
     fun whenSearchTermAndGuessMatchReturnPerfectScoreText() = runBlockingTest {
         val searchTerm = "search term"
         val guess = searchTerm
-        val expected = ResultsData(R.string.results_perfect_score)
+        val expected = ResultsData(R.string.results_perfect_score, gifId = R.raw.win)
 
         val dictionaryService = mockk<IDictionaryService>()
 
@@ -54,7 +54,7 @@ class TestResultsViewModel {
         val searchTerm = "search term"
         val guess = "something else"
         val score = 100
-        val expected = ResultsData(R.string.results_some_points, score)
+        val expected = ResultsData(R.string.results_some_points, score, R.raw.soso)
 
         val dictionaryService = mockk<IDictionaryService>()
 
@@ -75,7 +75,7 @@ class TestResultsViewModel {
         val searchTerm = "search term"
         val guess = "something else"
         val listWord = "Not that"
-        val expected = ResultsData(R.string.results_no_points)
+        val expected = ResultsData(R.string.results_no_points, gifId = R.raw.bad)
 
         val dictionaryService = mockk<IDictionaryService>()
 
