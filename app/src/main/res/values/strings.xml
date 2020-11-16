@@ -4,6 +4,10 @@
     <string name="welcome_flavor">Why use words to convey and idea when you can use a series of soundless movie clips? Gifs are the best way to let the world know your deep thoughts.\nBut who is better at guessing what gifs mean, you or your closest friend?\nPress the button below to find out!</string>
     <string name="welcome_button_text">Let\'s Play!</string>
     <string name="search_instructions">Okay, decide who will be player one. Hiding the screen so the other player can\'t see, enter a search team below.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="results_title">How\'d ya do?</string>
+    <string name="results_score_placeholder">Calculating score…</string>
+    <string name="results_perfect_score">Perfect Score! 1000 pts!</string>
+    <string name="results_some_points">%1$s pts</string>
+    <string name="results_no_points">"Sorry, bad guess. 0 pts."</string>
+    <string name="results_play_again">Play Again!</string>
 </resources>
