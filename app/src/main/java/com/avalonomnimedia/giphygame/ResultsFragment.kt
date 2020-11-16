@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.lifecycle.*
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.avalonomnimedia.giphygame.service.DictionaryService
 import com.avalonomnimedia.giphygame.service.IDictionaryService
@@ -33,7 +35,13 @@ class ResultsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_results, container, false)
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_results, container, false)
+        view.findViewById<Button>(R.id.button_play_again).setOnClickListener {
+            findNavController().navigate(ResultsFragmentDirections.actionResultsFragmentToSearchFragment())
+        }
+        return view
+    }
 
     override fun onStart() {
         super.onStart()
@@ -41,6 +49,8 @@ class ResultsFragment : Fragment() {
         resultsViewModel.calculateScore(args.searchTerm, args.guess).observe(this) {
             textScore.text = this.requireContext().getString(it.resId, it.score)
         }
+
+
     }
 }
 
