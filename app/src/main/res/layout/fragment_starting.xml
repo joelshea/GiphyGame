@@ -18,11 +18,11 @@
 
     <ImageView
         android:id="@+id/welcome_gif"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="139dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
@@ -30,8 +30,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_gif">
@@ -42,14 +40,15 @@
             android:layout_height="wrap_content"
             android:text="@string/welcome_title"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:textAppearance="@style/TitleText" />
 
         <TextView
             android:id="@+id/textview_instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/welcome_flavor"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textAppearance="@style/InstructionsText" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

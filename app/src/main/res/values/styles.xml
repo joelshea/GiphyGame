@@ -4,6 +4,25 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="editTextStyle">@style/App_EditTextStyle</item>
+        <item name="android:textViewStyle">@style/Widget.AppCompat.TextView.Custom</item>
+    </style>
+
+    <style name="App_EditTextStyle" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">#808080</item>
+        <item name="android:layout_height">45dip</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+    </style>
+
+    <style name="Widget.AppCompat.TextView.Custom" parent="Widget.AppCompat.TextView">
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="TitleText" parent="@android:style/TextAppearance.Large">
+    </style>
+
+    <style name="InstructionsText" parent="@android:style/TextAppearance.Small">
     </style>
 
 </resources>

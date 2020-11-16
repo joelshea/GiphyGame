@@ -9,11 +9,18 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_search.*
 
 
 class SearchFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.fragment_search, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?  {
+        val view  = inflater.inflate(R.layout.fragment_search, container, false)
+
+        Glide.with(this).load(R.raw.letsplay).into(view.findViewById(R.id.imageLetsPlay))
+
+        return view
+    }
 
     override fun onStart() {
         super.onStart()

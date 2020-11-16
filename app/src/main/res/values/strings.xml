@@ -12,4 +12,5 @@
     <string name="results_some_points">%1$s pts</string>
     <string name="results_no_points">"Sorry, bad guess. 0 pts."</string>
     <string name="results_play_again">Play Again!</string>
+    <string name="giphy_instructions">What do you think the search term was?</string>
 </resources>
