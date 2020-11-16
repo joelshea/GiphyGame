@@ -37,13 +37,7 @@ class GiphyFragment : Fragment() {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val guess = v.text.toString()
                 if (guess.contains(" ")) {
-                    AlertDialog.Builder(context)
-                        .setTitle("Uh oh")
-                        .setMessage("On word searches only, please.") // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton(android.R.string.ok, null) // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show()
+                    getSpacesAlert(requireContext())?.show()
                 } else {
                     findNavController().navigate(GiphyFragmentDirections.actionGiphyFragmentToResultsFragment(args.searchTerm, guess))
                     val inputManager: InputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

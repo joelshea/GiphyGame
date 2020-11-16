@@ -1,8 +1,6 @@
 package com.avalonomnimedia.giphygame
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,17 +21,13 @@ class SearchFragment : Fragment() {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val searchTerm = v.text.toString()
                 if (searchTerm.contains(" ")) {
-                    AlertDialog.Builder(context)
-                        .setTitle("Uh oh")
-                        .setMessage("On word searches only, please.") // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton(android.R.string.ok, null) // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show()
+                    getSpacesAlert(requireContext())?.show()
+                    return@setOnEditorActionListener false
                 } else {
-                    findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToGiphyFragment(searchTerm))
                     val inputManager: InputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     inputManager.hideSoftInputFromWindow(v.windowToken, 0)
+
+                    findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToGiphyFragment(searchTerm))
                     return@setOnEditorActionListener true
                 }
             }
